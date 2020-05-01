@@ -81,4 +81,4 @@ model.compile(optimizer='adam', loss=bce_logdice_loss, metrics=[dice_coef, 'accu
 
 checkpoint1 = ModelCheckpoint('unet_test.h5', monitor='val_dice_coef', verbose=1, save_best_only=False, mode='max', period=1)  
 
-history = model.fit(x=train_X, y=train_Y, epochs=10, batch_size=16, verbose=1, validation_data=(test_X, test_Y), callbacks=[checkpoint1])
+history = model.fit(train_X, train_Y, epochs=50, batch_size=32, verbose=1, validation_data=(test_X, test_Y), callbacks=[checkpoint1], steps_per_epoch = len(train_X)/32, validation_steps = len(test_X)/32)

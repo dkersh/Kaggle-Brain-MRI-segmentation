@@ -17,9 +17,9 @@ Total Parameters: lots
 
 def unetpp():
 
-    filt_num = [32,64,128,256,512]
+    filt_num = [16,32,64,128,256]
 
-    input_tensor = Input(shape=(240,320,1))
+    input_tensor = Input(shape=(256,256,1))
 
     conv1_1 = conv_block(input_tensor,filt_num[0],(3,3))
     pool_1 = MaxPooling2D((2,2), strides=(2,2))(conv1_1)
